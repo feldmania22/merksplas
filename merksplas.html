@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Map</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #login-form {
+            text-align: center;
+        }
+        #login-form input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #login-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #protected-content {
+            display: none;
+            text-align: center;
+        }
+        #protected-content iframe {
+            width: 600px;
+            height: 450px;
+            border: 0;
+        }
+        #hint {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+        #hint-text {
+            display: none;
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-form">
+        <label for="password">Enter Password:</label>
+        <input type="password" id="password" />
+        <button onclick="checkPassword()">Submit</button>
+        <div id="hint" onclick="showHint()">Need a hint?</div>
+        <div id="hint-text">The hint is: The name of the place we're going - solve the riddle!</div> <!-- Replace with your actual hint -->
+    </div>
+    <div id="protected-content">
+        <h1>Protected Content</h1>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d630782.8937769706!2d4.051553391051499!3d51.86103532167634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6af01c4de5ebb%3A0x503aa8abb2714edf!2s2330%20Merksplas%2C%20Belgium!5e0!3m2!1sen!2snl!4v1720082182005!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const correctPassword = 'Merksplas'; // Replace 'your_password' with your actual password
+
+            if (password === correctPassword) {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'block';
+            } else {
+                alert('Incorrect password');
+            }
+        }
+
+        function showHint() {
+            document.getElementById('hint-text').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
